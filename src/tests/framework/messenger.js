@@ -46,9 +46,15 @@ const messengerFn = () => {
     // create error event handler
     const errorHandler = ( err, msg ) => {
         if ( msg === undefined ) {
-            msg = '(no user specified message)';
+            console.error( `TestingContext: Error: %c${err}`, 'font-weight: bold' );
         }
-        console.error(`TestingContext: Error: ${err} (${msg})`);
+        else {
+            console.error( 
+                `TestingContext: Error: %c${err} %c(${msg})`, 
+                'font-weight: bold; text-decoration: none;', 
+                'color: red; text-decoration: underline;' 
+                );
+        }
     }
     eventsEmitter.on('error', errorHandler);
 

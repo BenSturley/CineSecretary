@@ -7,17 +7,24 @@
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //  BS
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// # Plans for self-developed datastore
-// # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// # Self-developed datastore
+// # 
 
 const fn = function( { datastore = null } = {} ) {
 
     const insertHandler = doc => {
         if ( doc === undefined ) {
-            throw new ReferenceError( '' );
+            throw new ReferenceError( 'No document supplied to save to datastore!' );
+        }
+        if ( !( typeof doc === 'object' && doc !== null ) ) {
+            throw new TypeError( 'Object to save must be an object!' );
         }
         
-        
+        // convert doc to JSON
+        const json = JSON.stringify( doc );
+    
+        const context = require('../../../../tests/framework/TestingContext');
+        context.messenger.info(json);
 
     };
     

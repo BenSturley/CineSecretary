@@ -18,7 +18,7 @@
         - deletions/edits adds extra rows
     - data store:
         - ?-separated-values - commas? pipes? nulls?
-        - json object serialisation?
+        - json object serialisation? --- YES
             - e.g.:
                 " {"name":"Ben","twitter":"@BemSturley","_id":"UqRiLaCVDgmI3n7L"} "
         - stores - datastore (file) per entity
@@ -44,3 +44,12 @@
             4.  open text file
             5.  convert {doc} to JSON
             6.  insert json to text file
+
+
+
+
+
+
+
+
+            

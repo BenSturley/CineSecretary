@@ -20,7 +20,7 @@ const globals = function() {
         APP_NAME_FRIENDLY:      'CineSecretary',
 
         TESTS_RUN_TESTS:        true,
-        TESTS_RUN_DB_DEV:       false,
+        TESTS_RUN_DB_DEV:       true,
     };
 };
 
