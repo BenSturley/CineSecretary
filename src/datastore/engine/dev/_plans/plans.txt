@@ -1,0 +1,46 @@
+// 
+// plans.txt
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// ~/datastore/engine/_plans/plans.txt
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//  4 December 2018
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//  BS
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// # Plans for self-developed datastore
+// # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+# Requirements:
+# ~~~~~~~~~~~~~
+    - text file data store
+    - additions-only data strategy 
+        - deletions/edits adds extra rows
+    - data store:
+        - ?-separated-values - commas? pipes? nulls?
+        - json object serialisation?
+            - e.g.:
+                " {"name":"Ben","twitter":"@BemSturley","_id":"UqRiLaCVDgmI3n7L"} "
+        - stores - datastore (file) per entity
+    - data inserts
+        - datastore is implicit (one store per entity)
+        - flat objects? child objects?
+            - flat objects for now
+            - references other objects by _id
+
+    - DATASTORE
+    ~~~~~~~~~~~
+        - input:  
+
+    - CODE:
+    ~~~~~~~
+        1. create datastore / load datastore
+            - var db = new Datastore( { options } );
+                - { options }
+                    = datafile: /path/to/data/file.db+
+                    = datafile: missing=in-memory?
+        2.  var doc = { name: 'Ben', email: 'bensturley@gmail.com }
+        3.  db.insert( {doc} );
+            4.  open text file
+            5.  convert {doc} to JSON
+            6.  insert json to text file
