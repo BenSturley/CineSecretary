@@ -37,8 +37,8 @@
         1. create datastore / load datastore
             - var db = new Datastore( { options } );
                 - { options }
-                    = datafile: /path/to/data/file.db+
-                    = datafile: missing=in-memory?
+                    = datafile: /path/to/data/file.db
+                    = datafile: missing=ERROR(/in-memory)
         2.  var doc = { name: 'Ben', email: 'bensturley@gmail.com }
         3.  db.insert( {doc} );
             4.  open text file

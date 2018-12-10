@@ -11,7 +11,7 @@
 // # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 // 
-let testingContextFactory = () => {
+let testingContextFactory = function() {
         
     // create messenger
     const messenger = require('./messenger');

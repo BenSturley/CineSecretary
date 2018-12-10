@@ -1,9 +1,9 @@
 // 
-// fs-tests.js
+// fs-tests-write.js
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// ~/tests/fs-tests.js
+// ~/tests/fs-tests-write.js
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//  4 December 2018
+//  8 December 2018
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //  BS
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -15,7 +15,7 @@ const testerFn = ( context ) => {
     if ( context === undefined ) {
         throw new ReferenceError('Test requires TestingContext.');
     }
-    context.current_test_name = 'FS Test';
+    context.current_test_name = 'FS Write Test';
     context.is_current_test_started = true;
     
     const path = require('path');
@@ -26,9 +26,31 @@ const testerFn = ( context ) => {
     const fs = require('fs');
     
     // check if file exists
-    const fileExists = fs.existsSync( filePath );
+    let fileExists = fs.existsSync( filePath );
     context.messenger.info( `File exists: ${fileExists}` );
     
+    if ( !fileExists ) {
+        
+        // create the file
+        context.messenger.message( 'Creating header content...' );
+        const headerData = new Uint8Array(
+            Buffer.from(NEW_DATASTORE_FILE_HEADER_CONTENT)
+            );
+
+        context.messenger.message( 'Writing header content...' );
+        fs.writeFileSync(filePath, headerData, (err) => {
+            if (err) {
+                context.messenger.error( err, 
+                    `Error writing header to new datastore file at: "${filePath}"` 
+                    );
+            }
+        });
+    }
+
+    // re-check if file exists
+    fileExists = fs.existsSync( filePath );
+    context.messenger.info( `File exists: ${fileExists}` );
+
     // create content to insert
     const fileContent = [];
     
@@ -45,20 +67,19 @@ const testerFn = ( context ) => {
                 context.messenger.message( `fileContent.length: ${fileContent.length}` );
             }
           });
+          
 
         stream.on( 'end', () => {
-            fileContent.push('[[data-ends]]');
+            // fileContent.push('[[data-ends]]');
+            fileContent.push( DATASTORE_FILE_DATA_END_MARKER );
             stream.close();
             context.messenger.info( 'Stream closed.' );
+
+            fileContent.forEach(f  => {
+                context.messenger.message( f );
+                });
         });
 
-        fileContent.forEach(f  => {
-            context.messenger.info( f );
-            });
-
-    }
-    else {
-        context.messenger.error( 'File does not exist.' );
     }
 
     context.is_current_test_completed = true;
@@ -67,7 +88,7 @@ const testerFn = ( context ) => {
 
 module.exports = {
     run_test:   testerFn,
-    test_name:  'FS Tests',
+    test_name:  'FS Write Tests',
     is_async:   false,
-    enabled:    true,   
+    enabled:    false,
 };
