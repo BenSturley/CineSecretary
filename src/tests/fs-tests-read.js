@@ -13,7 +13,7 @@
 const testerFn = ( context ) => {
 
     if ( context === undefined ) {
-        throw new ReferenceError('Test requires TestingContext.');
+        throw new ReferenceError( 'Test requires TestingContext.' );
     }
     context.current_test_name = 'FS Read Test';
     context.is_current_test_started = true;
@@ -37,7 +37,7 @@ const testerFn = ( context ) => {
         // create the file
         context.messenger.message( 'Creating header content...' );
         const headerData = new Uint8Array(
-            Buffer.from(globals.NEW_DATASTORE_FILE_HEADER_CONTENT)
+            Buffer.from( globals.NEW_DATASTORE_FILE_HEADER_CONTENT )
             );
 
         context.messenger.message( 'Writing header content...' );
@@ -66,7 +66,7 @@ const testerFn = ( context ) => {
             let chunk;
             while (null !== (chunk = stream.read())) {
                 fileContent.push(chunk);
-                console.log(`Received ${chunk.length} bytes of data.`);
+                console.log( `Received ${chunk.length} bytes of data.` );
                 context.messenger.message( `fileContent.length: ${fileContent.length}` );
             }
           });
@@ -87,5 +87,5 @@ module.exports = {
     run_test:   testerFn,
     test_name:  'FS Read Tests',
     is_async:   false,
-    enabled:    true,
+    enabled:    false,
 };

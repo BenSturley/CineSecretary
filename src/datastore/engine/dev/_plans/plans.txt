@@ -10,6 +10,11 @@
 // # Plans for self-developed datastore
 // # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+# Useage
+# ~~~~~~
+    - 
+
+
 
 # Requirements:
 # ~~~~~~~~~~~~~
@@ -44,12 +49,12 @@
             4.  open text file
             5.  convert {doc} to JSON
             6.  insert json to text file
-
-
-
-
-
-
-
-
             
+
+    - Module Requirements
+    ---------------------
+        - insert record
+        - remove record
+        - update record
+        - find record by {field(s)}
+        - find all records by {field(s)}

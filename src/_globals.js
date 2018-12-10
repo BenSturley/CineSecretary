@@ -18,7 +18,7 @@ const globals = function() {
         APP_NAME_FRIENDLY:      'CineSecretary',
 
         TESTS_RUN_TESTS:        true,
-        TESTS_RUN_DB_DEV:       true,
+        TESTS_RUN_DB_DEV:       false,
 
         DATASTORE_GLOBALS:  {
             NEW_DATASTORE_FILE_HEADER_CONTENT:      `## ${globals.APP_NAME} DATASTORE FILE ##`,
