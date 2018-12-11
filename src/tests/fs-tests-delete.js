@@ -14,10 +14,13 @@ const deleter = ( context ) => {
     if ( context === undefined ) {
        throw new ReferenceError('Test requires TestingContext.');
     }
-    context.current_test_name = 'FS Read Test';
+    context.current_test_name = 'FS Delete Test';
     context.is_current_test_started = true;
     
     const fs = require('fs');
+
+    // get file path
+    const filePath = 'C:\\Users\\Owner\\dev\\CineSecretary\\CineSecretary\\src\\tests\\assets\\fs-test-file-delete.txt';
 
     // delete file
     try {
@@ -32,9 +35,9 @@ const deleter = ( context ) => {
 
 };
 
-module.exporst = {
+module.exports = {
     run_test:       deleter,
     test_name:      'FS Delete Tests', 
     is_async:       false,
-    is_enabled:     false,
+    enabled:     true,
 };

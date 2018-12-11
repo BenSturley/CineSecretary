@@ -32,7 +32,8 @@ const testerFn = ( context ) => {
     let fileExists = fs.existsSync( filePath );
     context.messenger.info( `File exists: ${fileExists}` );
     
-    if ( !fileExists ) {
+    
+     if ( !fileExists ) {
         
         // create the file
         context.messenger.message( 'Creating header content...' );
@@ -79,5 +80,5 @@ module.exports = {
     run_test:   testerFn,
     test_name:  'FS Write Tests',
     is_async:   false,
-    enabled:    true,
+    enabled:    false,
 };
